@@ -1,2 +1,2 @@
-efibootmgr -c -d /dev/sda -p 1 -L "archPC" -l "\EFI\arch\vmlinuz-linux" -u "root=UUID=e06264e2-1ad6-4f35-b2b0-c76bfe296c05 resume_offset=34816 resume=/dev/sda2 rw quiet loglevel=3 initrd=\EFI\arch\initramfs-linux.img"
+efibootmgr -c -d /dev/sda -p 1 -L "archTop" -l "\EFI\arch\vmlinuz-linux" -u "root=UUID=fe9d56d6-9f5e-4a78-9f24-9ed91c1203d1 resume_offset=34816 resume=/dev/sda7 rw quiet loglevel=3 initrd=\EFI\arch\initramfs-linux.img"
 #rcutree.gp_init_delay=1 nvidia-drm.modeset=1"
