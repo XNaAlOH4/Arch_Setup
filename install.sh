@@ -5,6 +5,22 @@ make
 make install
 echo "xrandr --auto\nxterm -fg white -bg black & exec 2bwm"
 
-#Get UUID
-blkid >> kern_param.sh
-filefrag -v /swapfile | head -n 4 | tail -n 1 >> kern_param.sh
+#Web browser
+#firefox
+
+# Audio
+AUDIO="alsa-utils"
+
+# File systems
+FS="dosfstools ntfs-3g"
+
+
+# GPU packages
+
+# Intel
+# Download libva-utils to check if drivers support GMA4500 H.264 accel decoding, can uninstall once checked
+INTEL="intel-media-driver libva-intel-driver libva-utils"
+# If H.264 decoding not supported, install libva-intel-driver-g45-h264 AUR
+
+# NVIDIA
+NVIDIA="nvidia nvidia-settings libvdpau-va-gl nvidia-prime"
