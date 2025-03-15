@@ -1,5 +1,5 @@
 pacman -Syu networkmanager vim gcc sudo nasm gdb efibootmgr git openssh make mesa xorg-server xcb-util-xrm xcb-util-keysyms xcb-util-wm xorg-xinit xterm tmux debugedit fakeroot
-git clone https://www.github.com/XNaAlOH4/2bwm
+git clone https://www.github.com/XNaAlOH4/2bwm.git
 cd 2bwm
 make
 make install

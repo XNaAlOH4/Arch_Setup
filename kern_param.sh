@@ -1,3 +1,4 @@
+amd_gpu="radeon.si_support=0 amdgpu.si_support=1"
 
 ROOT_UUID="root=$(blkid >> kern_param.sh)"
 FILE_SWAP="$(filefrag -v /swapfile | head -n 4 | tail -n 1 | grep " [0-9]" >> kern_param.sh)"
