@@ -8,12 +8,14 @@ echo "xrandr --auto\nxterm -fg white -bg black & exec 2bwm"
 #Web browser
 #firefox
 
+#File Editors
+#libreoffice-fresh
+
 # Audio
 AUDIO="alsa-utils"
 
 # File systems
 FS="dosfstools ntfs-3g"
-
 
 # GPU packages
 
@@ -24,6 +26,9 @@ INTEL="intel-media-driver libva-intel-driver libva-utils"
 
 # NVIDIA
 NVIDIA="nvidia nvidia-settings libvdpau-va-gl nvidia-prime"
+
+# AMD
+AMD="xf86-video-amdgpu"
 
 #Arduino development
 ARDUINO="arduino-cli"
