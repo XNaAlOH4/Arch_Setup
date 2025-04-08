@@ -6,16 +6,16 @@
 
 #End Setup
 
-export __NV_PRIME_RENDER_OFFLOAD=1
+#export __NV_PRIME_RENDER_OFFLOAD=1
 # ONLY ENABLE IF I WANT NVIDIA TO BE USED AS SOON AS STARTX IS RUN
 #export __GLX_VENDOR_LIBRARY_NAME=nvidia
-export LIBVA_DRIVER_NAME=nvidia
-export VDPAU_DRIVER=nvidia
+#export LIBVA_DRIVER_NAME=nvidia
+#export VDPAU_DRIVER=nvidia
 
-export PATH=$PATH:/home/coolberry/.cmds
-export C_INCLUDE_PATH="/home/coolberry/.clib/:$C_INCLUDE_PATH"
+export CHOME=''
+export PATH=$PATH:$CHOME/.cmds
+export C_INCLUDE_PATH="$CHOME/.clib/:$C_INCLUDE_PATH"
 export GIT_SSH_COMMAND="/usr/bin/ssh -i ~/.ssh/id_rsa" git pull
-export CHOME='/home/coolberry'
 
 alias ls='ls --color'
 alias ll='ls -a -l'
@@ -33,6 +33,8 @@ alias get_graphics='lspci -v -nn -d ::03xx'
 alias stm32-ide='$CHOME/st/stm32cubeide_1.17.0/stm32cubeide'
 alias stm32-prog='$CHOME/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin/STM32_Programmer_CLI'
 
+alias batt='cat /sys/class/power_supply/BAT0/capacity'
+
 function update() {
 	sudo pacman -Syu $1
 }
@@ -40,10 +42,6 @@ function update() {
 function start-ssh() {
 	eval "$(ssh-agent -s)"
 	ssh-add ~/.ssh/id_ed25519
-}
-
-function clone-aur() {
-	git clone https://aur.archlinux.org/$1
 }
 
 function clone() {
@@ -54,12 +52,12 @@ function ssh-clone() {
 	git clone git@github.com:$1
 }
 
-function update_stm32() {
-	stm32-prog -c port=swd -w '/home/coolberry/STM32CubeIDE/workspace_1.17.0/First Proj/Release/First Proj.bin' 0x08000000 -s
+function aur-clone() {
+	git clone https://aur.archlinux.org/$1
 }
 
-function backlight() {
-	echo $1 > /sys/class/backlight/dell_uart_backlight/brightness
+function update_stm32() {
+	stm32-prog -c port=swd -w '~/STM32CubeIDE/workspace_1.17.0/First Proj/Release/First Proj.bin' 0x08000000 -s
 }
 
 function neofetch() {
@@ -76,7 +74,7 @@ function neofetch() {
 
 alias unzip='python $CHOME/.cmds/unzip.py'
 
-alias help='grep alias /home/coolberry/.bash_profile'
+alias help='grep alias ~/.bash_profile'
 
 function seekfile() {
 	head -c $((512*($2+1))) $1 | tail -c $((512)) | xxd
@@ -109,8 +107,8 @@ alias screen_shot='ffmpeg -f x11grab -video_size 1920x1080 -framerate 1 -i :0.0 
 alias video_record='ffmpeg -f pulse -ac 1 -i alsa_output.pci-0000_00_1f.3.analog-stereo.monitor -f x11grab -s 1920x1080 -r 25 -i :0.0 -vcodec libx264 -preset ultrafast output.mpg;ffmpeg -i output.mpg output.mp4'
 alias webcam_record='ffmpeg -f v4l2 -r 25 -video_size 1280x720 -vcodec libx264 -preset ultrafast -i /dev/video0 output.mpg;ffmpeg -i output.mpg webcam.mp4'
 
-alias console_playvid='ffmpeg -y -nostats -i /home/coolberry/output.mp4 -f pulse alsa_output.pci-0000_00_1f.3.analog-stereo -pix_fmt bgra -filter:v fps=25 -filter:v realtime -f fbdev /dev/fb0 > /dev/null 2>&1'
-alias console_record='ffmpeg -f fbdev -i /dev/fb0 -q:v 0.1 -filter:v fps=20 /home/coolberry/AudioVisual/output.mpg'
+alias console_playvid='ffmpeg -y -nostats -i ~/output.mp4 -f pulse alsa_output.pci-0000_00_1f.3.analog-stereo -pix_fmt bgra -filter:v fps=25 -filter:v realtime -f fbdev /dev/fb0 > /dev/null 2>&1'
+alias console_record='ffmpeg -f fbdev -i /dev/fb0 -q:v 0.1 -filter:v fps=20 ~/AudioVisual/output.mpg'
 alias console_screen_shot='ffmpeg -f fbdev -i /dev/fb0 -vframes:v 1 output.png'
 
 #quality screen record

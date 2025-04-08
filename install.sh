@@ -3,7 +3,8 @@ git clone https://www.github.com/XNaAlOH4/2bwm.git
 cd 2bwm
 make
 make install
-echo "xrandr --auto\nxterm -fg white -bg black & exec 2bwm" > ~/.xinitrc
+printf "xrandr --auto\nxterm -fg white -bg black & exec 2bwm" > ~/.xinitrc
+printf "[user]\n\temail = xnaaloh4x@gmail.com\n\tname = XNaAlOH4" > ~/.gitconfig
 
 #Web browser
 #firefox
@@ -25,11 +26,11 @@ INTEL="intel-media-driver libva-intel-driver libva-utils"
 # If H.264 decoding not supported, install libva-intel-driver-g45-h264 AUR
 
 # NVIDIA
-NVIDIA="nvidia nvidia-settings libvdpau-va-gl nvidia-prime"
+NVIDIA="nvidia nvidia-settings libvdpau-va-gl nvidia-prime opencl-nvidia"
 
 # AMD
-AMD="xf86-video-amdgpu"
-AMD_AUR="amdgpu-pro-oglp vulkan-amdgpu-pro amf-amdgpu-pro"
+AMD="xf86-video-amdgpu opencl-rusticle-mesa"
+AMD_AUR="amdgpu-pro-oglp vulkan-amdgpu-pro amf-amdgpu-pro opencl-amd"
 
 #Arduino development
 ARDUINO="arduino-cli"
@@ -38,7 +39,6 @@ ARDUINO="arduino-cli"
 # For running the uninstaller
 STM32="jre-openjdk"
 STM32_AUR=("ncurses5-compat-libs")
-#
 
 #Android development
 ANDROID_STUDIO="which"
@@ -61,3 +61,5 @@ if [ "$AUR_INSTALLS" != "" ]; then
 		cd ..
 	done
 fi
+
+
