@@ -1,4 +1,4 @@
-pacman -Syu networkmanager vim gcc sudo nasm gdb efibootmgr git openssh make mesa xorg-server xcb-util-xrm xcb-util-keysyms xcb-util-wm xorg-xinit xterm tmux debugedit fakeroot
+pacman -Syu networkmanager vim gcc sudo nasm gdb efibootmgr git openssh make mesa xorg-server xcb-util-xrm xcb-util-keysyms xcb-util-wm xorg-xinit xterm tmux debugedit fakeroot man-pages
 git clone https://www.github.com/XNaAlOH4/2bwm.git
 cd 2bwm
 make
@@ -29,6 +29,7 @@ NVIDIA="nvidia nvidia-settings libvdpau-va-gl nvidia-prime"
 
 # AMD
 AMD="xf86-video-amdgpu"
+AMD_AUR="amdgpu-pro-oglp vulkan-amdgpu-pro amf-amdgpu-pro"
 
 #Arduino development
 ARDUINO="arduino-cli"
@@ -48,7 +49,7 @@ ADDITIONAL_INSTALLS=""
 AUR_INSTALLS=""
 
 if [ "$ADDITIONAL_INSTALLS" != "" ]; then
-	pacman -Syu "$ADDITIONAL_INSTALLS"
+	pacman -Syu $ADDITIONAL_INSTALLS
 fi
 
 if [ "$AUR_INSTALLS" != "" ]; then
