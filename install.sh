@@ -3,8 +3,14 @@ git clone https://www.github.com/XNaAlOH4/2bwm.git
 cd 2bwm
 make
 make install
+cd ..
 printf "xrandr --auto\nxterm -fg white -bg black & exec 2bwm" > ~/.xinitrc
 printf "[user]\n\temail = xnaaloh4x@gmail.com\n\tname = XNaAlOH4" > ~/.gitconfig
+
+systemctl enable NetworkManager
+
+# move keyboard config
+# mv 50-libinput.conf /etc/X11/xorg.conf.d
 
 #Web browser
 #firefox
@@ -29,8 +35,8 @@ INTEL="intel-media-driver libva-intel-driver libva-utils"
 NVIDIA="nvidia nvidia-settings libvdpau-va-gl nvidia-prime opencl-nvidia"
 
 # AMD
-AMD="xf86-video-amdgpu opencl-rusticle-mesa"
-AMD_AUR="amdgpu-pro-oglp vulkan-amdgpu-pro amf-amdgpu-pro opencl-amd"
+AMD="xf86-video-amdgpu opencl-rusticl-mesa"
+AMD_AUR="amdgpu-pro-installer vulkan-amdgpu-pro opencl-amd"
 
 #Arduino development
 ARDUINO="arduino-cli"
