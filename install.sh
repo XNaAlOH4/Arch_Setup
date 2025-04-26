@@ -4,7 +4,7 @@ cd 2bwm
 make
 make install
 cd ..
-printf "xrandr --auto\nxterm -fg white -bg black & exec 2bwm" > ~/.xinitrc
+printf "xterm -fg white -bg black & exec 2bwm" > ~/.xinitrc
 printf "[user]\n\temail = xnaaloh4x@gmail.com\n\tname = XNaAlOH4" > ~/.gitconfig
 
 systemctl enable NetworkManager
@@ -15,6 +15,13 @@ systemctl enable NetworkManager
 LAPTOP='mv 50-libinput.conf /etc/X11/xorg.conf.d;mv .tmux.conf ~/'
 
 # Only For Laptop #
+
+# Fan Control
+FAN='lm_sensors'
+DELL_FAN='acpi tcl'
+DELL_FAN_AUR='tcllib i8kutils'
+# This is installed if the computer has BIOS fan control overriding the OS level fan control
+DELL_FAN_BIOS_AUR='dell-bios-fan-control-git'
 
 #Web browser
 #firefox
