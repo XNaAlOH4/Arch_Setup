@@ -9,8 +9,12 @@ printf "[user]\n\temail = xnaaloh4x@gmail.com\n\tname = XNaAlOH4" > ~/.gitconfig
 
 systemctl enable NetworkManager
 
-# move keyboard config
-# mv 50-libinput.conf /etc/X11/xorg.conf.d
+# Only For Laptop #
+
+# move libinput config and move tmux config 
+LAPTOP='mv 50-libinput.conf /etc/X11/xorg.conf.d;mv .tmux.conf ~/'
+
+# Only For Laptop #
 
 #Web browser
 #firefox
