@@ -23,17 +23,20 @@ DELL_FAN_AUR='tcllib i8kutils'
 # This is installed if the computer has BIOS fan control overriding the OS level fan control
 DELL_FAN_BIOS_AUR='dell-bios-fan-control-git'
 
-#Web browser
-#firefox
+# Web browser
+fox='firefox'
 
-#File Editors
-#libreoffice-fresh
+# File Editors
+libre='libreoffice-fresh'
 
 # Audio
 AUDIO="alsa-utils"
 
 # File systems
 FS="dosfstools ntfs-3g"
+
+# Android File Transfer
+aft='android-file-transfer'
 
 # GPU packages
 
