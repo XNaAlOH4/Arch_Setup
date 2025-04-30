@@ -51,7 +51,9 @@ NVIDIA="nvidia nvidia-settings libvdpau-va-gl nvidia-prime opencl-nvidia"
 
 # AMD
 AMD="xf86-video-amdgpu opencl-rusticl-mesa"
-AMD_AUR="amdgpu-pro-installer vulkan-amdgpu-pro opencl-amd"
+AMD_OPEN="vulkan-radeon"
+AMD_OPENCL_AUR="opencl-amd"
+AMD_PRO_AUR="amdgpu-pro-installer vulkan-amdgpu-pro"
 
 #Arduino development
 ARDUINO="arduino-cli"
