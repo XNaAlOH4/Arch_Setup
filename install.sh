@@ -6,6 +6,7 @@ make install
 cd ..
 printf "xterm -fg white -bg black & exec 2bwm" > ~/.xinitrc
 printf "[user]\n\temail = xnaaloh4x@gmail.com\n\tname = XNaAlOH4" > ~/.gitconfig
+printf "if [ "$#" -ne 1 ]; then\n\tcat /sys/class/backlight/dell_uart_backlight/brightness\nelse\n\techo $1 > /sys/class/backlight/dell_uart_backlight/brightness\nfi" > /usr/bin/backlight
 
 systemctl enable NetworkManager
 
