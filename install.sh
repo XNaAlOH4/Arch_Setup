@@ -7,8 +7,7 @@ cd ..
 printf "xterm -fg white -bg black & exec 2bwm" > ~/.xinitrc
 printf "[user]\n\temail = xnaaloh4x@gmail.com\n\tname = XNaAlOH4" > ~/.gitconfig
 backlight=$(ls /sys/class/backlight)
-printf "if [ "$#" -ne 1 ]; then\n\tcat /sys/class/backlight/$backlight/brightness\nelse\n\techo $1 > /sys/class/backlight/$backlight/brightness\nfi" > tmp
-'> /usr/bin/backlight'
+printf "if [ "$#" -ne 1 ]; then\n\tcat /sys/class/backlight/$backlight/brightness\nelse\n\techo $1 > /sys/class/backlight/$backlight/brightness\nfi" > /usr/bin/backlight
 
 systemctl enable NetworkManager
 
@@ -69,6 +68,10 @@ STM32_AUR=("ncurses5-compat-libs")
 ANDROID_STUDIO="which"
 #INSTALL_ANDROID_STUDIO
 ANDROID_STUDIO_AUR=("android-studio android-sdk-cmdline-tools-latest android-sdk-build-tools android-sdk-platform-tools android-platform")
+NODEJS="nodejs npm"
+
+#Android disassembler
+JADX="jadx"
 
 ADDITIONAL_INSTALLS=""
 AUR_INSTALLS=""
