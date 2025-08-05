@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #Setup
+. "$HOME/.cargo/env"
 
 #export AUDIO_HW=$(aplay -l | grep ALC274 | head -c 37 | tail -c 1)
 
@@ -8,11 +9,12 @@
 
 #export __NV_PRIME_RENDER_OFFLOAD=1
 # ONLY ENABLE IF I WANT NVIDIA TO BE USED AS SOON AS STARTX IS RUN
-#export __GLX_VENDOR_LIBRARY_NAME=nvidia
-#export LIBVA_DRIVER_NAME=nvidia
-#export VDPAU_DRIVER=nvidia
+export DRI_PRIME=1
+export __GLX_VENDOR_LIBRARY_NAME=amdgpu
+export LIBVA_DRIVER_NAME=amdgpu
+export VDPAU_DRIVER=amdgpu
 
-export CHOME=''
+export CHOME='/home/coolberry'
 export PATH=$PATH:$CHOME/.cmds
 export C_INCLUDE_PATH="$CHOME/.clib/:$C_INCLUDE_PATH"
 export GIT_SSH_COMMAND="/usr/bin/ssh -i ~/.ssh/id_rsa" git pull
@@ -30,13 +32,21 @@ alias recod='vim $CHOME/.bash_profile'
 alias relod='source ~/.bash_profile'
 alias find_pkg='sudo pacman -Ss'
 alias get_graphics='lspci -v -nn -d ::03xx'
-alias stm32-ide='$CHOME/st/stm32cubeide_1.17.0/stm32cubeide'
-alias stm32-prog='$CHOME/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin/STM32_Programmer_CLI'
+alias stm32-ide='$CHOME/st/stm32cubeide_1.18.1/stm32cubeide'
+alias stm32-prog='$CHOME/STM32Cube/STM32CubeProgrammer/bin/STM32_Programmer_CLI'
 
 alias batt='cat /sys/class/power_supply/BAT0/capacity'
 
+function aft() {
+	aft-mtp-mount $1
+}
+
 function update() {
-	sudo pacman -Syu $1
+	sudo pacman -Syu $@
+}
+
+function test() {
+	echo "$1"
 }
 
 function start-ssh() {
@@ -56,8 +66,8 @@ function aur-clone() {
 	git clone https://aur.archlinux.org/$1
 }
 
-function update_stm32() {
-	stm32-prog -c port=swd -w '~/STM32CubeIDE/workspace_1.17.0/First Proj/Release/First Proj.bin' 0x08000000 -s
+function update-stm32() {
+	sudo '/home/coolberry/STM32Cube/STM32CubeProgrammer/bin/STM32_Programmer_CLI' -c port=swd -w "$CHOME/STM32CubeIDE/workspace_1.18.1/KeyboardFix/Release/KeyboardFix.bin" 0x08000000 -s
 }
 
 function neofetch() {
@@ -136,7 +146,11 @@ function console_vid() {
 }
 
 function console_img() {
-	ffmpeg -y -nostats -loop 1 -framerate 1 -i $1 -pix_fmt bgra -f fbdev /dev/fb0 > /dev/null 2>&1
+	ffmpeg -y -nostats -loop 1 -framerate 1 -i "$1" -pix_fmt bgra -f fbdev /dev/fb0 > /dev/null 2>&1
+}
+
+function console_img1() {
+	ffmpeg -y -nostats -i "$1" -pix_fmt bgra -f fbdev /dev/fb0 > /dev/null 2>&1
 }
 
 function console_vid_aud() {
@@ -175,4 +189,18 @@ function x11_img() {
 
 function test_mic() {
 	ffmpeg -f alsa -i default -f alsa hw:0
+}
+
+#Webcam things
+function query-cam() {
+	v4l2-ctl -d /dev/video0 --list-formats-ext
+}
+
+#Video Editing
+function get-frame() {
+	ffmpeg -i $1 -vf "select=eq(n\,200)" -vframes 1 $2
+}
+
+function mp42mov() {
+	ffmpeg -i "$1" -vcodec mjpeg -q:v 0 -acodec pcm_s16be -q:a 0 -f mov $2
 }
