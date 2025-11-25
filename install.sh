@@ -8,6 +8,7 @@ printf "xterm -fg white -bg black & exec 2bwm" > ~/.xinitrc
 printf "[user]\n\temail = xnaaloh4x@gmail.com\n\tname = XNaAlOH4" > ~/.gitconfig
 backlight=$(ls /sys/class/backlight)
 printf "if [ "$#" -ne 1 ]; then\n\tcat /sys/class/backlight/$backlight/brightness\nelse\n\techo $1 > /sys/class/backlight/$backlight/brightness\nfi" > /usr/bin/backlight
+printf "if [ "$#" -ne 1 ]; then\n\tiw dev wlp3s0 interface add wlp3s0_ap type __ap addr 12:34:56:78:90:ab\n\tip addr add 192.168.0.1/24 dev wlp3s0_ap\nelse\n\tiw dev wlp3s0_ap del\nfi" > /usr/bin/createap.sh
 
 systemctl enable NetworkManager
 
