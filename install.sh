@@ -45,7 +45,7 @@ aft='android-file-transfer'
 
 # Intel
 # Download libva-utils to check if drivers support GMA4500 H.264 accel decoding, can uninstall once checked
-INTEL="intel-media-driver libva-intel-driver libva-utils"
+INTEL="intel-media-driver libva-intel-driver libva-utils intel-compute-runtime"
 # thermal throttling on intel cpu
 INTELTHERM="thermald"
 # If H.264 decoding not supported, install libva-intel-driver-g45-h264 AUR
@@ -54,7 +54,7 @@ INTELTHERM="thermald"
 NVIDIA="nvidia nvidia-settings libvdpau-va-gl nvidia-prime opencl-nvidia"
 
 # AMD
-AMD="xf86-video-amdgpu opencl-rusticl-mesa"
+AMD="xf86-video-amdgpu"
 AMD_OPEN="vulkan-radeon"
 AMD_OPENCL_AUR="opencl-amd"
 AMD_PRO_AUR="amdgpu-pro-installer vulkan-amdgpu-pro"
